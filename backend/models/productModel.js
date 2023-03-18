@@ -1,5 +1,5 @@
 // import connection
-import db from "../config/database";
+import db from "../config/database.js";
 
 // get all products
 export const getProducts = (res) => {
@@ -39,7 +39,7 @@ export const insertProduct = (data, res) => {
 
 // update product 
 export const updateProductById = (data, id, res) => {
-  db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name], [data.product_price], [id], (err, results) => {
+  db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {
     if (err) {
       console.log(err)
       res(err, null)
